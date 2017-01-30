@@ -1,4 +1,4 @@
-There is store application with usage of AngularJS
+There is store application - created with AngularJS
 
 Setup environment:
 
