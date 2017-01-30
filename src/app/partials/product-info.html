@@ -1,0 +1,57 @@
+﻿<div class="product-properties">
+    <div class="row product-properties">
+        <div class="cart-product-list">
+            <div class="col-md-1 col-xs-12">
+                <img ng-src="./app/images/products/{{product.sku}}.jpg" alt="{{product.name}}"/>
+            </div>
+            <div class="col-md-4 col-xs-12 prop-product-name">
+                <p>
+                    <b>{{product.name}}:</b>
+                    <br/>
+                    {{product.description}}
+                </p>
+                <div class="product-buttons">
+                    <button
+                            class="btn btn-success"
+                            ng-click="cart.addItem(product.sku, product.name, product.price, 1)">
+                        Add to cart
+                    </button>
+                    <button class="btn" onclick="window.location.href=''">
+                         More products
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid cart-product-list">
+        <div class="row-fluid">
+            <div class="span8">
+                <!-- product info -->
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="tdRight"><p><b>Processor</b></p></td>
+                        <td class="tdCenter"><p>{{product.processor}}</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRight"><p><b>Display</b></p></td>
+                        <td class="tdCenter"><p>{{product.display}} Inches</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRight"><p><b>Camera</b></p></td>
+                        <td class="tdCenter"><p>{{product.camera}} Megapixeles</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRight"><p><b>Net</b></p></td>
+                        <td class="tdCenter"><p>{{product.internet}}</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRight"><p><b>Year</b></p></td>
+                        <td class="tdCenter"><p>{{product.year}}</p></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

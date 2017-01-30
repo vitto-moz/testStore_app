@@ -1,0 +1,51 @@
+﻿<div class="navbar">
+    <div class="navWrapper">
+        <div class="search">
+            <img class="search-icon" src="./app/images/icons/search-icon.png">
+            <input class="searchIn" placeholder="" ng-model="search">
+        </div>
+        <div class="navbarCard" colspan="4">
+            <a 
+             href="index.html#/cart" 
+             title="go to shopping cart" 
+             ng-disabled="cart.getTotalCount() < 1"
+             class="a-hover-none-decoration"
+            > 
+                <span class="hiddenMob"> 
+                    <img class="cart-icon" src="./app/images/icons/cart-icon.png">
+                </span>
+                <b class="item-count">{{cart.getTotalCount()}}</b>
+                <b class="navbarCard-total">{{cart.getTotalSum() | currency}}</b>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row product-list">
+    <div class="clearfix visible-xs"></div>
+        <div class="col-md-4 col-sm-6 col-xs-12 product-block" ng-repeat="product in store.products | orderBy:'name' | filter:search" >
+            <div class="product-card">
+                <div class="image">
+                    <a href="#/app/products/{{product.sku}}">
+                        <img ng-src="./app/images/products/{{product.sku}}.jpg" alt="{{product.name}}" />
+                    </a>
+                </div>
+                              <span>
+                                  <h5 class="product-name"><a href="#/products/{{product.sku}}">{{product.name}}</a><br/></h5>
+                                <p class="product-info">
+
+                                    {{product.description}}
+                                </p>
+                                <div class="price">
+                                  {{product.price | currency}}
+                                </div>
+                                <div class="add-to-cart">
+                                    <a href=""  ng-click="cart.addItem(product.sku, product.name, product.price, 1)">Add to Cart</a>
+                                </div>
+                              </span>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <p class="copyright">© 2017 Store. All rights reserved.</p>
+</footer>

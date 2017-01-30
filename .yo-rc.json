@@ -1,0 +1,21 @@
+{
+  "generator-angular1-gulp": {
+    "version": "1.0.0",
+    "props": {
+      "resolved": "C:\\Users\\гяук\\AppData\\Roaming\\npm\\node_modules\\generator-angular1-gulp\\generators\\app\\index.js",
+      "namespace": "angular1-gulp:app",
+      "argv": {
+        "remain": [],
+        "cooked": [],
+        "original": []
+      },
+      "framework": "angular1",
+      "modules": "webpack",
+      "css": "scss",
+      "js": "babel",
+      "ci": [],
+      "sample": "hello",
+      "router": "none"
+    }
+  }
+}

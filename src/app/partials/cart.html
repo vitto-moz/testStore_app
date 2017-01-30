@@ -1,0 +1,81 @@
+﻿<div>
+    <div class="row-fluid cart-product-list">
+        <div class="span8">
+            <!-- items -->
+            <table class="table table-striped">
+                <!-- header -->
+                <tr class="cart-list-row">
+                    <td class="table-title_blue">
+                        <b class="table-title__name">Product</b>
+                    </td>
+                    <td class="tdCenter table-title_blue">
+                        <b class="table-title__name">Quantity</b>
+                    </td>
+                    <td class="tdCenter table-title_blue">
+                        <b class="table-title__name">Sum</b>
+                    </td>
+                </tr>
+                <!-- empty cart message -->
+                <tr ng-hide="cart.getTotalCount() > 0" >
+                    <td class="tdCenter" colspan="4">
+                        click "more products" - to continue shopping
+                    </td>
+                </tr>
+
+                <!-- cart items -->
+                <tr ng-repeat="item in cart.items | orderBy:'name'" class="cart-list-row">
+                    <td class="cart-list__item">
+                            <button class="btn-round btn-round_red" ng-click="cart.addItem(item.sku, item.name, item.price, -10000000)">-</button>
+                        <div class="product-in-cart">
+                            {{item.name}}
+                        </div>
+                    </td>
+                    <td class="tdCenter">
+                      <div class="input-append cart-list__quantity">
+                        <!-- use type=tel instead of  to prevent spinners -->
+                        <div class="counter-block">
+                            <button 
+                                class="btn-round btn-round_green" type="button" 
+                                ng-disabled="item.quantity >= 1000"
+                                ng-click="cart.addItem(item.sku, item.name, item.price, +1)">↑</button> 
+                            <button
+                                class="btn-round btn-round_transp" type="button" 
+                                ng-disabled="item.quantity <= 1"
+                                ng-click="cart.addItem(item.sku, item.name, item.price, -1)">↓</button>
+                        </div>
+                        <input
+                            class="span3 text-center input-quantity" type="tel" 
+                            ng-model="item.quantity" 
+                            ng-change="cart.saveItems()" />
+                      </div>
+                    </td>
+                    <td class="tdCenter">{{item.price * item.quantity | currency}}</td>
+                </tr>
+                <!-- footer -->
+                <tr class="well">
+                    <td><b>Total</b></td>
+                    <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
+                    <td class="tdCenter"><b>{{cart.getTotalSum() | currency}}</b></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- buttons -->
+        <div class="span4 cart-footer">
+            <p class="text-info cart-footer__btn-block">
+                <button 
+                    class="btn footer-btn-block__btn footer-btn-info" 
+                    onclick="window.location.href='index.html'">
+                    <i class="icon-chevron-left" /> more products
+                </button>
+                <button 
+                    class="btn btn-danger footer-btn-block__btn" 
+                    ng-click="cart.clearItems()" 
+                    ng-disabled="cart.getTotalCount() < 1" >
+                    <i class="icon-trash icon-white" /> clear all
+                </button>
+            </p>
+            <br /><br />
+        </div>
+    </div>
+</div>
